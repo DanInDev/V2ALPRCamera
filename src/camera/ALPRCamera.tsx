@@ -63,40 +63,10 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
    * 
    * @param {OCRFrame} ocrFrame - The OCR frame to process.
    */
-  
-    const findPlatesAndVerify = Worklets.createRunInJsFn((ocrFrame: OCRFrame) => {
-  
-      console.log('FindPlatesAndVerify ', ocrFrame);
-      // Recognize license plates in the OCR frame, iterating over the collection of filters
-      const ocrResult = applyFilters(ocrFrame, activeFilterRef.current);
-  
-      if (OnPlateRecognized) { // Check if the callback function has been implemented
-        OnPlateRecognized(ocrResult); // A licenseplate has been recognized on the frame, return the result
-      }
-  
-      if (ocrResult !== null) {
-  
-        // Invoke OnCallLimitReached when a license plate has been recognized 'callLimit' times
-        callLimiter(ocrResult, callLimit || 0, (result: string | null) => {
-          if (result !== null) {
-            console.log(
-              'APILimiter[' + (callLimit || 0) + '] has recognized: ' + ocrResult + '\n'
-            );
-            if (OnCallLimitReached) { // Add null check
-              OnCallLimitReached(result);
-            }
-          }
-        });
-      }
-    });
-  
-    //const findPlatesFunction = Worklets.createRunOnJS(findPlatesAndVerify);
 
+  const findPlatesAndVerify = Worklets.createRunInJsFn((ocrFrame: OCRFrame) => {
 
-    /*
-    // Function to make sure TS doesn't complain about the parameters and functions
-  function findPlatesTS(ocrFrame: OCRFrame) {
-
+    console.log('.')
     // Recognize license plates in the OCR frame, iterating over the collection of filters
     const ocrResult = applyFilters(ocrFrame, activeFilterRef.current);
 
@@ -104,6 +74,7 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
       OnPlateRecognized(ocrResult); // A licenseplate has been recognized on the frame, return the result
     }
 
+    console.log(ocrResult?.length)
     if (ocrResult !== null) {
 
       // Invoke OnCallLimitReached when a license plate has been recognized 'callLimit' times
@@ -118,8 +89,8 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
         }
       });
     }
-  }
-  */
+  });
+
   /**
    * Takes a picture using the provided camera reference and returns the image path.
    *
@@ -197,13 +168,13 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
 
       {/* Take picture button with option to customize a style */}
 
-      
-     
-        <TouchableOpacity
-          onPress={takePicture}
-          style={takePictureButtonStyle}
-        ></TouchableOpacity>
-        <Text style={takePictureButtonTextStyle}>Take Picture</Text>
+
+
+      <TouchableOpacity
+        onPress={takePicture}
+        style={takePictureButtonStyle}
+      ></TouchableOpacity>
+      <Text style={takePictureButtonTextStyle}>Take Picture</Text>
 
     </View>
   );

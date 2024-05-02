@@ -82,39 +82,48 @@ export const filterWithMultipleOptions = (
  * @param {string} activeFilter - The active filter name.
  * @returns {string | null} - The sanitized recognized text, or null if no text is recognized.
  */
-
 export function applyFilters(
   ocrFrame: OCRFrame,
   activeFilter: string
 ): string | null {
 
   // Get the filter function from the map
-  const filter = filterMap.get(activeFilter);
+  const filterAsArray = filterMap.get(activeFilter);
 
-  // Check if the filter exists
-  if (!filter) {
-    console.log ('Filter not found')
+  if (!filterAsArray) { 
+    console.log('No filter found, returning null');
     return null;
-  }
-  // Filter the OCR frame with the specified filter
-  const filteredResults = filterWithMultipleOptions(ocrFrame, filter); 
+  } 
 
-  // Check if there are any filtered results
-  if (filteredResults !== null) {
-    // Check if there is only one filtered result
-    if (filteredResults.length === 1) {
-      const recognizedText = filteredResults[0] ? BlockToString(filteredResults[0]) : '';
-      return sanitizeString(recognizedText);
+  // Iterate through each filter option
+  for (const filterName of filterAsArray) {
+    
+    // Extract the name property from the filter options
+    const { name } = filterName;
 
-      // If there are multiple filtered results
-    } else {
-      const lowestBlock = findBlockWithHighestX(filteredResults);
+    // Print only the country property
+    console.log('Filtering with:', name);
 
-      // If there are multiple filtered results, return the one with the highest X coordinate
-      const recognizedText = lowestBlock ? BlockToString(lowestBlock) : '';
-      return sanitizeString(recognizedText);
+    // Filter the OCR frame with the specified filter
+    const filteredResults = filterWithMultipleOptions(ocrFrame, filterAsArray);
+
+    // Check if there are any filtered results
+    if (filteredResults !== null) {
+      // Check if there is only one filtered result
+      if (filteredResults.length === 1) {
+        const recognizedText = filteredResults[0] ? BlockToString(filteredResults[0]) : '';
+        return sanitizeString(recognizedText);
+      } else {
+        // If there are multiple filtered results, return the one with the highest X coordinate
+        const lowestBlock = findBlockWithHighestX(filteredResults);
+        const recognizedText = lowestBlock ? BlockToString(lowestBlock) : '';
+        return sanitizeString(recognizedText);
+      }
     }
   }
+
+  console.log('No filtered results, returning null');
   return null;
 }
+
 

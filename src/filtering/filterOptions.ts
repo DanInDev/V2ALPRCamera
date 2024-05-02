@@ -29,7 +29,7 @@ export interface FilterOptions {
    * (Optional) The country associated with the filter option.
    * This can be used to distinguish between different types of license plates from different countries.
    */
-  country?: string;
+  name?: string;
 }
 
 
@@ -39,7 +39,7 @@ const DK_NO: FilterOptions = {
   minLength: 7,
   maxLength: 7,
   pattern: /[A-Z]{2}\d{5}/,
-  country: ' Danish_Norweigan',
+  name: ' Danish_Norweigan',
 };
 
 // Regular expression for matching strings with at least two uppercase letters and atleast two digits
@@ -47,6 +47,7 @@ const generalPlate: FilterOptions = {
   minLength: 5,
   maxLength: 8,
   pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[0-9].*[0-9]).{4,}$/, 
+  name: 'General',
 };
  /**
   * Array of 1 filter options for Danish/Norweigan license plates.
