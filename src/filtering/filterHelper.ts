@@ -66,8 +66,12 @@ export const BlockToString = (result: TextBlock): string => {
     block: TextBlock,
     options: FilterOptions,
   ): boolean => {
+    
+    console.log ('Checking block')
+
     const sanitizedText = sanitizeTextBlock(block);
-  
+    console.log ('Sanitized text: ', sanitizedText)
+
     const {minLength, maxLength, pattern} = options;
   
     // Check if the text matches the regex and is within the specified character length range

@@ -53,14 +53,18 @@ export const filterWithMultipleOptions = (
   // Define the blocks that passes through filter
   const filteredBlocks: TextBlock[] = [];
 
-  // Iterate through each block in the result
-  result.result.blocks.forEach(block => {
+  console.log ('Amount of Blocks to Filter: ', result.result.blocks.length)
+  //console.log (result.result.blocks)
 
+  result.result.blocks.forEach(block => {
     // Check against each filter option
     for (const options of optionsList) {
       if (isWithinFilterOption(block, options)) {
         filteredBlocks.push(block); // Keep the block in the result
+        console.log ('Block passed filter')
         break; // Move to the next block
+      } else {
+        console.log ('Block did not pass filter')
       }
     }
   });
@@ -68,9 +72,11 @@ export const filterWithMultipleOptions = (
   // Check if there are any filtered blocks
   if (filteredBlocks.length > 0) {
     // Return the filtered blocks
+    console.log (filteredBlocks.length, ' block(s) passed filter')
     return filteredBlocks;
   } else {
     // Return null if no blocks pass any of the custom filters
+    console.log ('No blocks passed filter')
     return null;
   }
 };
@@ -97,7 +103,7 @@ export function applyFilters(
 
   // Iterate through each filter option
   for (const filterName of filterAsArray) {
-    
+
     // Extract the name property from the filter options
     const { name } = filterName;
 
