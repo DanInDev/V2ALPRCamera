@@ -1170,6 +1170,10 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@DanInDev/vision-camera-ocr@github:DanInDev/vision-camera-ocr-v2":
+  version "2.3.1"
+  resolved "git+ssh://git@github.com/DanInDev/vision-camera-ocr-v2.git#b34b6faa99b39dd555b1d5dceaa2252b2a4b0f4e"
+
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   resolved "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.4.0.tgz"
@@ -1682,11 +1686,6 @@
     graceful-fs "^4.1.3"
     prompts "^2.4.2"
     semver "^7.5.2"
-
-"@react-native-community/geolocation@^3.2.0":
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-3.2.1.tgz"
-  integrity sha512-/+HNzuRl4UCMma7KK+KYL8k2nxAGuW+DGxqmqfpiqKBlCkCUbuFHaZZdqVD6jpsn9r/ghe583ECLmd9SV9I4Bw==
 
 "@react-native-community/hooks@^3.0.0":
   version "3.0.0"
@@ -5624,7 +5623,7 @@ react-native-reanimated@3.7.2:
     convert-source-map "^2.0.0"
     invariant "^2.2.4"
 
-react-native-vision-camera@3.9.0:
+react-native-vision-camera@*, react-native-vision-camera@3.9.0:
   version "3.9.0"
   resolved "https://registry.npmjs.org/react-native-vision-camera/-/react-native-vision-camera-3.9.0.tgz"
   integrity sha512-q0HejFTS56s5DXWHZhlWLLZMKn/8OXALrqET+FySPIKskwYEdJ5rOV2aDlD6hlo67qCNFGUIMZWGFFc9L2os1g==

@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
@@ -8,6 +9,7 @@ import {
   useCameraPermission,
   useFrameProcessor,
 } from 'react-native-vision-camera';
+import {scanOCR} from '@DanInDev/vision-camera-ocr';
 
 function App() {
   // Ask for Camera Permissions via. React-Native hook
@@ -19,13 +21,17 @@ function App() {
   // Main frame processor, doing OCR async away from the camera thread
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet'
-    console.log('running sync')
     runAsync(frame, () => {
       'worklet'
-      console.log('running a sync: frame: ')
+
+      // vision-camera-ocr to scan all text in the frame
+      const ocrFrame = scanOCR(frame);
+
+      console.log (ocrFrame)
 
     });
   }, []);
+
 
   // If camera permission is denied, render a message to request permission
   if (!hasPermission) {
