@@ -64,8 +64,9 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
    * @param {OCRFrame} ocrFrame - The OCR frame to process.
    */
   
-    const findPlatesAndVerify = Worklets.createRunOnJS((ocrFrame: OCRFrame) => {
+    const findPlatesAndVerify = Worklets.createRunInJsFn((ocrFrame: OCRFrame) => {
   
+      console.log('FindPlatesAndVerify ', ocrFrame);
       // Recognize license plates in the OCR frame, iterating over the collection of filters
       const ocrResult = applyFilters(ocrFrame, activeFilterRef.current);
   
@@ -154,7 +155,7 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
       // Scan the OCR frame with Vision-Camera-OCR
       const ocrFrame = scanOCR(frame);
 
-      console.log('OCR Frame: ', ocrFrame);
+      //console.log('OCR Frame: ', ocrFrame);
       // Find license plates in the OCR frame and use the callback function to update the OCR result
       findPlatesAndVerify(ocrFrame);
     });
