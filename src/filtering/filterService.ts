@@ -1,6 +1,6 @@
-import {OCRFrame, TextBlock} from '@DanInDev/vision-camera-ocr';
-import {FilterOptions} from './filterOptions';
-import {BlockToString, isWithinFilterOption, sanitizeString} from './filterHelper';
+import { OCRFrame, TextBlock } from '@DanInDev/vision-camera-ocr';
+import { FilterOptions } from './filterOptions';
+import { BlockToString, isWithinFilterOption, sanitizeString } from './filterHelper';
 import { filterMap } from './filterMap';
 
 /* 
@@ -53,33 +53,33 @@ export const filterWithMultipleOptions = (
   // Define the blocks that passes through filter
   const filteredBlocks: TextBlock[] = [];
 
-  console.log ('Amount of Blocks to Filter: ', result.result.blocks.length)
-  //console.log (result.result.blocks)
+  // Print the amount of blocks to filter
+  console.log('Amount of Blocks to Filter: ', result.result.blocks.length)
 
-  result.result.blocks.forEach(block => {
-    // Check against each filter option
-    for (const options of optionsList) {
-      if (isWithinFilterOption(block, options)) {
+  // Loop through all blocks
+  for (const block of result.result.blocks) {
+   
+    // Loop through all filter options
+    for (const option of optionsList) {
+      if (isWithinFilterOption(block, option)) {
+        console.log ('[', block.text,'] Passed Filter: ', option.name, )
         filteredBlocks.push(block); // Keep the block in the result
-        console.log ('Block passed filter')
-        break; // Move to the next block
+        break;  // Break the option loop if it is within a filter
       } else {
-        console.log ('Block did not pass filter')
+        console.log ('[', block.text,'] Did not pass Filter: ', option.name,)
       }
     }
-  });
+  }
 
   // Check if there are any filtered blocks
   if (filteredBlocks.length > 0) {
-    // Return the filtered blocks
-    console.log (filteredBlocks.length, ' block(s) passed filter')
+    console.log(filteredBlocks.length, ' block(s) passed filter')
     return filteredBlocks;
-  } else {
-    // Return null if no blocks pass any of the custom filters
-    console.log ('No blocks passed filter')
+} else {
+    console.log('No blocks passed filter or no blocks to filter')
     return null;
-  }
-};
+}
+}
 
 /**
  * Applies the specified filter to an OCRFrame and returns the sanitized recognized text.
@@ -88,7 +88,7 @@ export const filterWithMultipleOptions = (
  * @param {string} activeFilter - The active filter name.
  * @returns {string | null} - The sanitized recognized text, or null if no text is recognized.
  */
-export function applyFilters(
+export function applyFilterFunctions(
   ocrFrame: OCRFrame,
   activeFilter: string
 ): string | null {
@@ -96,10 +96,10 @@ export function applyFilters(
   // Get the filter function from the map
   const filterAsArray = filterMap.get(activeFilter);
 
-  if (!filterAsArray) { 
+  if (!filterAsArray) {
     console.log('No filter found, returning null');
     return null;
-  } 
+  }
 
   // Iterate through each filter option
   for (const filterName of filterAsArray) {

@@ -67,7 +67,7 @@ export const BlockToString = (result: TextBlock): string => {
     options: FilterOptions,
   ): boolean => {
     
-    console.log ('Checking block')
+    
 
     const sanitizedText = sanitizeTextBlock(block);
     console.log ('Sanitized text: ', sanitizedText)

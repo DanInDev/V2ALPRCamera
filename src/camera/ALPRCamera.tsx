@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Camera, runAsync, useCameraDevice, useCameraPermission, useFrameProcessor } from 'react-native-vision-camera';
 import { OCRFrame, scanOCR } from '@DanInDev/vision-camera-ocr';
 import { Worklets } from 'react-native-worklets-core';
-import { applyFilters } from '../filtering/filterService';
+import { applyFilterFunctions} from '../filtering/filterService';
 import { callLimiter } from '../api/callLimiter';
 import { ALPRCameraProps } from './ALPRCameraProps';
 
@@ -66,15 +66,16 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
 
   const findPlatesAndVerify = Worklets.createRunInJsFn((ocrFrame: OCRFrame) => {
 
-    console.log('.')
+    console.log('<--------- OCR Frame --------->')
     // Recognize license plates in the OCR frame, iterating over the collection of filters
-    const ocrResult = applyFilters(ocrFrame, activeFilterRef.current);
+    const ocrResult = applyFilterFunctions(ocrFrame, activeFilterRef.current);
+
+    console.log('OCR Result: ', ocrResult);
 
     if (OnPlateRecognized) { // Check if the callback function has been implemented
       OnPlateRecognized(ocrResult); // A licenseplate has been recognized on the frame, return the result
     }
 
-    console.log(ocrResult?.length)
     if (ocrResult !== null) {
 
       // Invoke OnCallLimitReached when a license plate has been recognized 'callLimit' times
