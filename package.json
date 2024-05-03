@@ -2,7 +2,7 @@
   "name": "@alprapp/v2alpr-camera",
   "version": "0.0.1",
   "description": "Automatic License Plate Reader (ALPR) camera component library",
-  "private": true,
+  "private": false,
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
 
