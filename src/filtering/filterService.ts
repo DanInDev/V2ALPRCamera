@@ -82,10 +82,11 @@ export const filterWithMultipleOptions = (
 }
 
 /**
- * Applies the specified filter to an OCRFrame and returns the sanitized recognized text.
+ * Applies the current filter to an OCRFrame, checks if there is multiple license plates,
+ * which returns the sanitized license plate closest to the bottom of the screen.
  * 
  * @param {OCRFrame} ocrFrame - The OCRFrame to apply the filter to.
- * @param {string} activeFilter - The active filter name.
+ * @param {string} activeFilter - The currently active filter name.
  * @returns {string | null} - The sanitized recognized text, or null if no text is recognized.
  */
 export function applyFilterFunctions(

@@ -30,10 +30,11 @@ export const BlockToString = (result: TextBlock): string => {
  */
 
   export const sanitizeTextBlock = (textblock: TextBlock): string => {
+    
     const blockText = textblock.lines.map((line) => line.text).join('');
   
     // Remove spaces, symbols, and newline characters from the text
-    const sanitizedText = blockText.replace(/[\s\n.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    const sanitizedText = sanitizeString(blockText);
   
     return sanitizedText;
   };
@@ -46,13 +47,12 @@ export const BlockToString = (result: TextBlock): string => {
  * @returns {string} - The sanitized string.
  */
 
-  export const sanitizeString = (input: String): string => {
-  
-    // Remove spaces, symbols, and newline characters from the text
-    const output = input.replace(/[\s\n.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-  
+  export const sanitizeString = (input: string): string => {
+
+    const output = input.replace(/[\s\n.,\/#!$%\^&\*;:{}=`~()|[\]-]/g, '');
     return output;
-  };
+};
+
   
   /**
  * Checks if a TextBlock meets the criteria specified in the FilterOptions.
@@ -67,8 +67,6 @@ export const BlockToString = (result: TextBlock): string => {
     options: FilterOptions,
   ): boolean => {
     
-    
-
     const sanitizedText = sanitizeTextBlock(block);
     console.log ('Sanitized text: ', sanitizedText)
 
