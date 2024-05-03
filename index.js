@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import example from './src/example';
+import example from './example/src/App';
 import ALPRCamera from './src/camera/ALPRCamera';
 import {name as appName} from './app.json';
 
