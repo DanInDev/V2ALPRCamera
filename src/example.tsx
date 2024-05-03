@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet} from "react-native";
 
 import { ALPRCamera } from "./camera/ALPRCamera";
 
@@ -7,7 +7,7 @@ const example: React.FC = () => {
 
   const [ocrResult, setOCRResult] = useState<string | null>(null);
   const [callResult, setCallResult] = useState<string | null>(null);
-  const [imagePath, setImagePath] = useState<string | null>(null);
+  const [imagePath, setImagePath] = useState<string | null>();
 
   // Callback function to handle OCR result update
   const handleOCRResultUpdate = (result: string | null) => {
@@ -44,6 +44,7 @@ return (
         <View>
             <Text>Current License Plate: {ocrResult}</Text>
             <Text>Last Called Result: {callResult}</Text>
+            <Text>Last Image Path: {imagePath}</Text>
         </View>
     </React.Fragment>
 );
@@ -51,7 +52,7 @@ return (
 
 const buttonStyles = StyleSheet.create({
   button: {
-    display: 'none', // Remove this line if you want the button to be visible
+   // display: 'none', // Remove this line if you want the button to be visible
     position: 'absolute',
     bottom: 20,
     alignSelf: 'center',

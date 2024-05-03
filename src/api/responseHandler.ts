@@ -42,20 +42,22 @@ export const isWithinWarningMinutes = (expirationTime: string, warningMinutes?: 
 
 export const handleResponse = (response: apiResponse | undefined): [boolean, boolean] => {
   try {
-    
     if (!response) {
       return [false, false]; // Return false for both values if response is null
     }
 
     switch (true) {
-
       case !response.expirationTime:
         return [true, false]; // Return true for hasPermission, but false for isWithinWarning if expirationTime is missing
       
       default:
         // Check if remaining time is within warning minutes
-        const isWithinWarning = isWithinWarningMinutes(response.expirationTime, response.warningMinutes);
-        return [true, isWithinWarning];
+        if (response.expirationTime && response.warningMinutes) {
+          const isWithinWarning = isWithinWarningMinutes(response.expirationTime, response.warningMinutes);
+          return [true, isWithinWarning];
+        } else {
+          return [true, false];
+        }
     }
   } catch (error: unknown) {
     console.error('Error handling response:', (error as Error).message);

@@ -1,14 +1,29 @@
 {
-  "name": "v2FrameProcessor",
+  "name": "react-native-alpr-camera",
   "version": "0.0.1",
+  "description": "Automatic License Plate Reader (ALPR) camera component library",
   "private": true,
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
+    "build": "tsc",
     "test": "jest"
   },
+  "files": [
+    "android/",
+    "ios/",
+    "lib/",
+    "src/",
+    "babel.config.js",
+    "README.md",
+    "package.json"
+  ],
+
   "dependencies": {
     "@DanInDev/vision-camera-ocr": "github:DanInDev/vision-camera-ocr-v2",
     "@react-native-community/hooks": "^3.0.0",
@@ -35,7 +50,12 @@
     "react-test-renderer": "18.2.0",
     "typescript": "5.0.4"
   },
-  "engines": {
-    "node": ">=18"
-  }
+  "keywords": [
+    "ALPR-Camera",
+    "for",
+    "React-Native"
+  ],
+  "author": "github.com/DanInDev | Daniel Filtenborg Nielsen",
+  "license": "ISC"
 }
+
