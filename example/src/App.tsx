@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet} from "react-native";
 
-import { ALPRCamera } from "../../src/camera/ALPRCamera";
+import { ALPRCamera } from "@alprapp/v2alpr-camera";
 
 const example: React.FC = () => {
 

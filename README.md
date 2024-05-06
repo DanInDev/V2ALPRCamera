@@ -47,8 +47,7 @@ In your project's root directory, create a file with the name:
 And add these two lines:
 
 ``` bash
-@alprapp:registry=https://gitlab.vonfrank.dk/api/v4/projects/77/packages/npm/
-
+@alprapp:registry=https://gitlab.vonfrank.dk/api/v4/projects/79/packages/npm/
 registry=https://registry.npmjs.org/
 ``` 
 It define to first to check the scope of @alprapp in the registry at gitlab.von.frank at the specific project. This will then check the registry on gitlab for the package, which is privated and uses your authentication token to verify your permissions.
