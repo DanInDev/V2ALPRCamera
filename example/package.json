@@ -14,7 +14,9 @@
     "@alprapp/v2alpr-camera": "^0.0.1",
     "react": "18.2.0",
     "react-native": "0.73.5",
-    "react-native-vision-camera": "3.9.0"
+    "react-native-vision-camera": "3.9.0",
+    "react-native-worklets-core": "0.4.0",
+    "string-hash-64": "1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -127,7 +127,6 @@ export const ALPRCamera: React.FC<ALPRCameraProps> = ({
       // Scan the OCR frame with Vision-Camera-OCR
       const ocrFrame = scanOCR(frame);
 
-      //console.log('OCR Frame: ', ocrFrame);
       // Find license plates in the OCR frame and use the callback function to update the OCR result
       findPlatesAndVerify(ocrFrame);
     });
