@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "build": "tsc",
+    "new": "npm run build && git add . && git commit -m 'Added-namespace' && git push && git push gitlab",
     "test": "jest"
   },
   "files": [
