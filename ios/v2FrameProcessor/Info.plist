@@ -17,6 +17,8 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
+	<key>NSCameraUsageDescription</key>
+	<string>ALRPCamera needs access to your Camera.</string>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>

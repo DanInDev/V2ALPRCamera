@@ -1,5 +1,10 @@
 # ALPR-Camera Component
 
+Note: This was tested on a react-native: "0.73.5", to troubleshoot you can create an empty project with:
+``` bash
+npx react-native init alprexample --version 0.73.5
+``` 
+
 ## Installing the package
 Set your config for npm in your terminal, within the root folder of your project. This requires an auth token from your profile on gitlab. 
 
@@ -23,17 +28,13 @@ This can be found in:
 **.npmrc**
 
 ## Add vision-camera and worklets-core to your project.
-For react-native-vision-camerea to work with worklets, it needs to link it when utilizing frame processor plugins.
+For react-native-vision-camera to work with worklets, it needs to link it when utilizing frame processor plugins.
 
 Run this command in the root directory of your project:
 
 ``` bash
-npm i react-native-vision-camera  react-native-vision-camera react-native-worklets-core @alprapp/alpr-camera 
+npm i react-native-vision-camera  react-native-vision-camera react-native-worklets-core 
 ```
-
-
-npm i react-native-worklets-core
-
 
 ### Install and add react-native-vision-camera as a dependecy for your project.
 
@@ -53,9 +54,11 @@ registry=https://registry.npmjs.org/
 It define to first to check the scope of @alprapp in the registry at gitlab.von.frank at the specific project. This will then check the registry on gitlab for the package, which is privated and uses your authentication token to verify your permissions.
 
 If it's not there, check the regular npm registry.
-
-# Old Readme
-###
+Then run:
+´´´ bash
+npm i @alprapp/alpr-camera 
+´´´
+# Extra Setup
 Setup your babel.config.js to include worklets for the frame Processor included in the ALPRCamera Component
 
 ```js
@@ -78,9 +81,10 @@ Open your project's `Info.plist` and add the following lines inside the outermos
 <string>$(PRODUCT_NAME) needs access to your Camera.</string>
 
 #### Android
-Open your project's `AndroidManifest.xml` and add the following lines inside the <manifest> tag:
-
+Open your project's `AndroidManifest.xml` and add the following lines inside the manifest tag
+```js
 <uses-permission android:name="android.permission.CAMERA" />
+```
 
 
 ## Usage

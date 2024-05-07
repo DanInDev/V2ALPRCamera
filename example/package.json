@@ -1,5 +1,5 @@
 {
-  "name": "example73",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,25 +7,21 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest",
-    "reload": "npm uninstall @alprapp/v2alpr-camera && npm install @alprapp/v2alpr-camera"
+    "test": "jest"
   },
   "dependencies": {
-    "@alprapp/v2alpr-camera": "^0.0.1",
     "react": "18.2.0",
-    "react-native": "0.73.5",
-    "react-native-vision-camera": "3.9.0",
-    "react-native-worklets-core": "0.4.0",
-    "string-hash-64": "1.0.3"
+    "react-native": "0.73.5", 
+    "react-native-vision-camera": "3.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.74.83",
-    "@react-native/eslint-config": "0.74.83",
-    "@react-native/metro-config": "0.74.83",
-    "@react-native/typescript-config": "0.74.83",
+    "@react-native/babel-preset": "0.73.21",
+    "@react-native/eslint-config": "0.73.2",
+    "@react-native/metro-config": "0.73.5",
+    "@react-native/typescript-config": "0.73.1",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
